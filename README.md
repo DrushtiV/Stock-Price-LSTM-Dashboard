@@ -18,6 +18,8 @@ Open **http://localhost:8501** → select a ticker → click **TRAIN & PREDICT**
 
 ## Architecture
 
+<img width="2720" height="3680" alt="lstm_stock_predictor_pipeline" src="https://github.com/user-attachments/assets/48da3dba-5b2a-4c2d-adcf-a8e5777697ff" />
+
 ```
 Yahoo Finance (yfinance)
         │
