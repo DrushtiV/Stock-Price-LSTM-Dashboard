@@ -1,7 +1,6 @@
 # Stock Price LSTM Dashboard 📈
 
-A production-grade deep learning system for stock price prediction and forecasting,
-built with a stacked LSTM + Monte-Carlo Dropout and served in a Streamlit dashboard.
+A production-grade deep learning system for stock price prediction and forecasting, built with a stacked LSTM + Monte-Carlo Dropout and served in a Streamlit dashboard.
 
 ---
 
@@ -41,7 +40,7 @@ Sliding Window  (seq_len=60, no shuffle)
   X: (N, 60, 11)    y: (N,) next-day close
         │
   ┌─────┴──────┐
-  Train (85%)   Test (15%)  ← chronological split
+   Train (85%)   Test (15%)  ← chronological split
   └─────┬──────┘
         ▼
   LSTM(128) → Dropout(0.2)
@@ -60,8 +59,7 @@ Monte-Carlo Dropout Inference
         │
         ▼
 Autoregressive Forecast (30 days)
-  Seed last 60 days → predict next →
-  append → drop oldest → repeat
+  Seed last 60 days → predict next → append → drop oldest → repeat
         │
         ▼
 Streamlit Dashboard
@@ -115,8 +113,7 @@ for day in range(30):
 ```
 
 ### Huber Loss (Outlier Robustness)
-Behaves like MSE for small errors, MAE for large ones —
-ideal for price series with occasional spikes.
+Behaves like MSE for small errors, MAE for large ones — ideal for price series with occasional spikes.
 
 ---
 
@@ -133,11 +130,8 @@ ideal for price series with occasional spikes.
 
 ## Network Fallback
 
-If Yahoo Finance is unreachable (e.g., corporate proxy, sandboxed environment),
-the dashboard automatically generates realistic synthetic price data using
-**Geometric Brownian Motion** with quarterly volatility regime shifts.
+If Yahoo Finance is unreachable (e.g., corporate proxy, sandboxed environment), the dashboard automatically generates realistic synthetic price data using **Geometric Brownian Motion** with quarterly volatility regime shifts.
 The LSTM pipeline is identical — only the data source differs.
-
 To force real data, run in an environment with internet access to `finance.yahoo.com`.
 
 ---
